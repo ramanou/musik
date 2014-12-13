@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<sec:http pattern="/resource" security="none" />
+	<sec:http pattern="/WEB-INF/jsp/liste" security="none" />
+	<sec:http pattern="/login" security="none" />
+	<sec:http pattern="/logout" security="none" />
+	
+	<sec:http auto-config="true">
+		<sec:intercept-url pattern="/admin/*" access="ROLE_ADMIN" />
+		<sec:form-login login-page="/login" 
+			authentication-failure-url="/loginfailed" 
+			default-target-url="/admin/manage"
+            always-use-default-target="true"  />
+		<sec:logout invalidate-session="true" logout-success-url="/"
+			logout-url="/logout" />
+	</sec:http>
+
+	<sec:authentication-manager>
+		<sec:authentication-provider
+			user-service-ref="DBUserDetailsService" />
+	</sec:authentication-manager>
+
+</beans>

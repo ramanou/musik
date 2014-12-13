@@ -1,0 +1,55 @@
+
+
+#slideshow{
+	
+	height: 200px;
+	width: 400px;
+	
+}
+
+#slides{
+	bottom: 10px;
+}
+
+#imgSlide{
+	height: 200px;
+	width: 400px;
+	border: 0;
+}
+
+#slides ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#slides li{
+	cursor: hand;
+	cursor: pointer;
+	
+	margin-left: 15px;
+	font-size: 1.2em;
+}
+
+#slides li:hover{
+	color: #a9a9a9;
+}
+
+#slideTitle{
+	cursor: hand;
+	cursor: pointer;
+}
+
+#slideText{
+	cursor: hand;
+	cursor: pointer;
+}
+
+.selected{
+	color: #FF0000;
+}
+
+.text{
+	color: #000;
+	margin-left: 90px;
+}
