@@ -9,29 +9,40 @@
 <title>Administration</title>
 </head>
 <body>
-	<ul>
-	<c:forEach items="${musics}" var="p">
-		
-		<li>
-			${p.id} ${p.duration} ${p.title} ${p.person} ${p.filePath} 
-		
-			<audio controls> 
-				<source src="${p.filePath} " />
-			</audio>
-			<a href="<c:url value="/admin/music/delete/${p.id}"/>">Supprimer cette Musique</a>
-			
-		</li>
-	</c:forEach>
-	</ul>
 	<form:form method="POST" modelAttribute="music" action="">
-	<p>
-	Durée<form:input path="duration" />
-	 
-	Titre<form:input path="title" /> 
+		<p>
+			Durée
+			<form:input path="duration" />
 
-	Source<form:input path="filePath" /> 
-	<input type="submit" value="Ajouter" />
-	</p>
+			Titre
+			<form:input path="title" />
+
+			Source
+			<form:input path="filePath" />
+
+			Artiste
+			<form:select path="person.id">
+				<c:forEach var="p" items="${persons}">
+					<form:option value="${p.id}">
+						<c:out value="${p.name} ${p.firstname}" />
+					</form:option>
+				</c:forEach>
+			</form:select>
+			<input type="submit" value="Ajouter" />
+		</p>
 	</form:form>
+
+	<ul>
+		<c:forEach items="${personsWithMusics}" var="p">
+			<li>${p.firstname } ${p.name }
+				<ul>
+					<c:forEach items="${p.musics}" var="m">
+					<li>${m.id} ${m.duration} ${m.title} : ${m.filePath} <a href="<c:url value="/admin/music/delete/${m.id}" />" >Supprimer</a></li>
+			</c:forEach>
+				</ul>
+			</li>
+		</c:forEach>
+	</ul>
+
 </body>
 </html>

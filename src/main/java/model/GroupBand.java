@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "group_band")
-public class GroupBand extends AbstractArtist implements Commentable {
+public class GroupBand extends AbstractArtist {
 
 	private static final long serialVersionUID = 1L;
 

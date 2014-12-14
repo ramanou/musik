@@ -1,7 +1,10 @@
-package controller.template;
+package controller;
+
+import java.util.List;
 
 import javax.validation.Valid;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -13,10 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.Person;
 import service.PersonService;
-
 import model.Music;
 import service.MusicService;
-
 import model.UserAdmin;
 import service.UserService;
 
@@ -31,6 +32,9 @@ public class AdminController {
 	private MusicService musicService;
 	
 	@Autowired
+	private PersonService personService;
+	
+	@Autowired
 	private UserService useradminService;
 	
 	@RequestMapping("/manage")
@@ -39,13 +43,12 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/artist", method = RequestMethod.POST)
-	public ModelAndView addArtist(@ModelAttribute("person") @Valid Person person, BindingResult results) {
+	public String addArtist(@ModelAttribute("person") @Valid Person person, BindingResult results) {
 		ModelAndView mav = new ModelAndView("/admin/artist/index");
 		if (!results.hasErrors()) {
 			artistService.createPerson(person);
 		}
-		mav.addObject("persons", artistService.findAllPersons());
-		return mav;
+		return "redirect:/admin/artist";
 	}
 
 	@RequestMapping(value = "/artist/delete/{id}", method = RequestMethod.GET)
@@ -65,13 +68,12 @@ public class AdminController {
 	//Mapping de la Music
 	
 	@RequestMapping(value = "/music", method = RequestMethod.POST)
-	public ModelAndView addMusic(@ModelAttribute("music") @Valid Music music, BindingResult results) {
+	public String addMusic(@ModelAttribute("music") @Valid Music music, BindingResult results) {
 		ModelAndView mav = new ModelAndView("/admin/music/index");
 		if (!results.hasErrors()) {
 			musicService.createMusic(music);
 		}
-		mav.addObject("musics", musicService.findAllMusics());
-		return mav;
+		return "redirect:/admin/music";
 	}
 
 	@RequestMapping(value = "/music/delete/{id}", method = RequestMethod.GET)
@@ -83,8 +85,8 @@ public class AdminController {
 	@RequestMapping(value = "/music", method = RequestMethod.GET)
 	public ModelAndView getMusics() {
 		ModelAndView mav = new ModelAndView("admin/music/index");
-		mav.addObject("musics", musicService.findAllMusics());
-		mav.addObject("music", new Music());
+		List<Person> persons = personService.findAllPersonsWithMusics();
+		mav.addObject("personsWithMusics", persons);
 		return mav;
 	}
 	
@@ -112,5 +114,14 @@ public class AdminController {
 		mav.addObject("useradmins", useradminService.findAllUsers());
 		mav.addObject("useradmin", new UserAdmin());
 		return mav;
+	}
+	
+	@ModelAttribute("music")
+	public Music getMusic() {
+		return new Music();
+	}
+	@ModelAttribute("persons")
+	public List<Person> getPersons() {
+		return personService.findAllPersons();
 	}
 }

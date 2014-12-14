@@ -40,8 +40,8 @@
 					<p>Ecoutez la musique sans limitation avec <a href="">MUZIKLOUD</a></p>
 				</header>
 				<footer>
-					<a href="#first" class="button scrolly">Notre Musique votre plaisir</a><br><br>
-					<a href="#first" class="button scrolly">Ecoutez et RE-écouter notre 3 Meilleures Sélection sur MUZIKLOUD</a>
+					<a href="#first" class="button scrolly">Notre Musique, votre plaisir</a><br><br>
+					<a href="#first" class="button scrolly">Ecoutez et RE-écoutez nos 3 Meilleures Sélection sur MUZIKLOUD</a>
 				</footer>
 				<br>
 				
@@ -77,17 +77,15 @@
 		<!-- Footer -->
 			<section id="footer">
 				<ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="https://github.com/ramanou/musik.git" class="icon fa-github"><span class="label">GitHub</span></a></li>
 				</ul>
 
 				<div class="copyright">
 					<ul class="menu">
-						<li><a href="/MusikKloud/"> Accueil </a></li>
-						<li><a href="biaou.net">  Liste de Musiques </a></li>
-						<li><a HREF="/MusikKloud/login"> Admin-LogIn </a></li>
-						<li><a href="biaou.net"> A Propos </a></li>
+						<li><a href="<c:url value="/" />"> Accueil </a></li>
+						<li><a href="<c:url value="/list" />">  Liste de Musiques </a></li>
+						<li><a HREF="<c:url value="/login" />"> Admin-LogIn </a></li>
+						<li><a href="<c:url value="/about" />"> A Propos </a></li>
 					</ul>
 				</div>
 				<div class="copyright">

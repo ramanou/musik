@@ -1,11 +1,13 @@
 package model;
 
-import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,7 +17,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "music")
-public class Music implements Serializable {
+public class Music {
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,14 +25,29 @@ public class Music implements Serializable {
 		return serialVersionUID;
 	}
 
-	// private AbstractArtist artist;
-	
-	@OneToMany
-	List<Music> musics;
-	
-	@ManyToOne
+	@OneToMany(mappedBy="music", cascade=CascadeType.ALL)
+	List<MusicComment> comments;
+
+	@ManyToOne(targetEntity=Person.class)
+	@JoinColumn(name="person_id", referencedColumnName="id")
 	private Person person;
-																																																																																	
+	
+	public List<MusicComment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<MusicComment> comments) {
+		this.comments = comments;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
 	@Column
 	private Integer duration;
 
@@ -41,14 +58,6 @@ public class Music implements Serializable {
 	@Id
 	@Column(name = "id")
 	private Integer id;
-
-	public Person getPerson() {
-		return person;
-	}
-
-	public void setPerson(Person person) {
-		this.person = person;
-	}
 
 	@NotEmpty
 	@Column

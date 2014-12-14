@@ -2,6 +2,7 @@ package service.impl;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,6 +48,16 @@ public class PersonServiceImpl implements PersonService {
 	@Override
 	public void updatePerson(Person Person) {
 		personDao.save(Person);
+	}
+
+	@Override
+	@Transactional
+	public List<Person> findAllPersonsWithMusics() {
+		List<Person> persons = personDao.findAll();
+		for (Person person : persons) {
+			Hibernate.initialize(person.getMusics());
+		}
+		return persons;
 	}
 
 }

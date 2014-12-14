@@ -16,4 +16,6 @@ public interface PersonService {
 
 	public void updatePerson(Person Person);
 
+	public List<Person> findAllPersonsWithMusics();
+
 }

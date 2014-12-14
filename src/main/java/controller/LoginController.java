@@ -1,4 +1,4 @@
-package controller.template;
+package controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +39,7 @@ public class LoginController {
 	 */
 	@RequestMapping("/logout")
 	public String logout() {
-		return "logout";
+		return "redirect:/";
 	}
 
 }

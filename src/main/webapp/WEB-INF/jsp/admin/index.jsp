@@ -23,17 +23,18 @@
 	</head>
 	<body>
 
+						<c:url value="/logout" var="logoutUrl" />
+						<form action="${logoutUrl}" method="post" id="logoutForm" />
 		<!-- Header -->
 			<section id="header" class="dark">
 				<header>
 					<h1><b>MUZIKLOUD</b> LE MEILLEUR DE LA MUZIK DE TIIR</h1>
 					<p>Espace de Management des Musiques  </p> 
 					<p> <b><a href="#" ><span class="label">Ajouter un Admin | </span></a>
-						<a href="#" ><span class="label">Ajouter Artiste | </span></a>
-						<a href="/MusikKloud/admin/music" ><span class="label">Gérer les Musiques | </span></a>
-						<a href="#" ><span class="label"> Deconnexion | </span></a></b></p>
-
-			</section>
+						<a href="<c:url value="/admin/artist" />" ><span class="label">Ajouter Artiste | </span></a>
+						<a href="<c:url value="/admin/music" />" ><span class="label">Gérer les Musiques | </span></a>
+						
+						<a href="javascript:formSubmit()"><span class="label"> Deconnexion | </span></a></b></p>
 			</section>
 
 			
@@ -61,4 +62,9 @@
 			</section>
 
 	</body>
+	<script>
+	function formSubmit() {
+		document.getElementById("logoutForm").submit();
+	}
+	</script>	
 </html>

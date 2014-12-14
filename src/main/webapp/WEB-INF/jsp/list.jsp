@@ -34,7 +34,11 @@
 				</header>
 				<footer>
 					<a href="#first" class="button scrolly">Notre Musique votre plaisir</a><br><br>
-					<a href="#first" class="button scrolly">Ecoutez et RE-écouter notre 3 Meilleures Sélection sur MUZIKLOUD</a>
+								<c:set var="actionURL"><c:url value="/search" /></c:set>
+								<form:form method="POST" modelAttribute="searchMusicWrapper" action="${actionURL}">
+									<form:input path="musicTitle" style="text-align:center;width:120%;height:5%;margin:auto;" type="text" name="nom" value="Votre nom ici" /> <br> 
+									<input type="submit" style="text-align:center;" type="submit" name="Rechercher" value="Rechercher"/>
+								</form:form>
 				</footer>
 				<br>
 				
@@ -48,26 +52,23 @@
 								</audio>
 							<br />
 
-							<p class="commentaire"><b>Biaou</b><br>
-
-						 		Cette Musique est un Choc <br>
+						<c:forEach items="${p.comments }" var="comment">
+							<p class="commentaire"><b>${comment.inetAdress}</b><br>
+						 		${comment.content} <br>
 						 		---------------------------------------------
 						 	</p>
-
-						 	<p class="commentaire"><b>Appréciations</b><br>
-
-						 		POINTPOINTPOINTPOINTPOINT <br>
-						 		---------------------------------------------
-						 	</p>
+						 	</c:forEach>
 						 	</li>
 
 						 	<li>
 						 			
-									<form:form method="POST" modelAttribute="music" action="commentaire.jsp" name="firstForm">
-									<form:input path="duration" style="text-align:center;width:120%;height:5%;margin:auto;" type="text" name="nom" value="Votre nom ici" /> <br> 
-									<form:input path="duration" style="text-align:center;width:120%;height:10%;margin:auto;" type="text" name="commentaire" value="Votre commentaire ici" /> <br> 
+									<c:set var="actionURL"><c:url value="/comment" /></c:set>
+								<form:form method="POST" modelAttribute="musicComment" action="${actionURL }" >
+									<form:hidden path="music.id" value="${p.id }"/>
+									<form:textarea path="content" style="text-align:center;width:120%;height:5%;margin:auto;" value="Comment here" /> <br> 
+									<form:select path="mark" items="${markValues }" class="rating" />
 									<input type="submit" style="text-align:center;" type="submit" name="Valider" value="Commentez"/>
-									</form:form>
+								</form:form>
 							</li>
 							<hr>
 						</c:forEach>
