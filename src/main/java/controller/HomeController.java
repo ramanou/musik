@@ -55,6 +55,15 @@ public class HomeController {
 		mav.addObject("musics", musicService.findAllMusicsWithComments());
 		return mav;
 	}
+	
+	/**
+	 * A propos
+	 */
+	@RequestMapping("/about")
+	public ModelAndView about() {
+		ModelAndView mav = new ModelAndView("apropos");
+		return mav;
+	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public ModelAndView searchMusic(

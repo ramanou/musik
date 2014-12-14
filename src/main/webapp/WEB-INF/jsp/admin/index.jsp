@@ -23,35 +23,37 @@
 	</head>
 	<body>
 
-						<c:url value="/logout" var="logoutUrl" />
-						<form action="${logoutUrl}" method="post" id="logoutForm" />
 		<!-- Header -->
 			<section id="header" class="dark">
 				<header>
 					<h1><b>MUZIKLOUD</b> LE MEILLEUR DE LA MUZIK DE TIIR</h1>
 					<p>Espace de Management des Musiques  </p> 
-					<p> <b><a href="#" ><span class="label">Ajouter un Admin | </span></a>
+					<p> <b><a href="<c:url value="/admin/manage" />" ><span class="label">Accueil ADMIN | </span></a>
+						<a href="<c:url value="/admin/useradmin" />" ><span class="label">Ajouter Admin | </span></a>
 						<a href="<c:url value="/admin/artist" />" ><span class="label">Ajouter Artiste | </span></a>
 						<a href="<c:url value="/admin/music" />" ><span class="label">Gérer les Musiques | </span></a>
-						
-						<a href="javascript:formSubmit()"><span class="label"> Deconnexion | </span></a></b></p>
+						<c:url var="logoutUrl" value="/j_spring_security_logout" />
+						<a href="${logoutUrl}"><span class="label"> Deconnexion | </span></a></b></p>
+
+			
+					<p>Ici Est votre Espace de Gestion et d'administration de MusiKloud</p>
+					<p>Cliquez Sur une option pour Manager</p>
+				</header>
 			</section>
 
 			
 		<!-- Footer -->
 			<section id="footer">
 				<ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
 					<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
 				</ul>
 
 				<div class="copyright">
 					<ul class="menu">
-						<li><a href="biaou.net"> Accueil | </a></li>
-						<li><a href="biaou.net">  Liste de Musiques | </a></li>
-						<li><a href="biaou.net"> Admin-LogIn | </a></li>
-						<li><a href="biaou.net"> A Propos | </a></li>
+						<li><a href="<c:url value="/" />"> Accueil </a></li>
+						<li><a href="<c:url value="/list" />">  Liste de Musiques </a></li>
+						<li><a href="<c:url value="/login" />"> Admin-LogIn </a></li>
+						<li><a href="<c:url value="/about" />"> A Propos </a></li>
 					</ul>
 				</div>
 				<div class="copyright">
@@ -62,9 +64,4 @@
 			</section>
 
 	</body>
-	<script>
-	function formSubmit() {
-		document.getElementById("logoutForm").submit();
-	}
-	</script>	
 </html>

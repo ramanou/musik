@@ -11,6 +11,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
+		<title>MUSIKLOUD Liste</title>
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 		<script src="resource/js/jquery.min.js"></script>
 		<script src="resource/js/jquery.scrolly.min.js"></script>
@@ -30,31 +31,36 @@
 			<section id="header" class="dark">
 				<header>
 					<h1><b>MUZIKLOUD</b> LE MEILLEUR DE LA MUZIK DE TIIR</h1>
+					<a href="<c:url value="/" />" class="button scrolly">Accueil</a>
+					<a href="<c:url value="/list" />" class="button scrolly">Liste de Musiques</a>
+					<a href="<c:url value="/login" />" class="button scrolly">Admin-LogIn</a>
+					<a href="<c:url value="/about" />" class="button scrolly">A Propos</a>
 					<p>Ecoutez la musique sans limitation avec <a href="">MUZIKLOUD</a></p>
 				</header>
 				<footer>
 					<a href="#first" class="button scrolly">Notre Musique votre plaisir</a><br><br>
 								<c:set var="actionURL"><c:url value="/search" /></c:set>
 								<form:form method="POST" modelAttribute="searchMusicWrapper" action="${actionURL}">
-									<form:input path="musicTitle" style="text-align:center;width:120%;height:5%;margin:auto;" type="text" name="nom" value="Votre nom ici" /> <br> 
+									<form:input path="musicTitle" style="text-align:center;width:60%;height:5%;margin:auto;" type="text" name="nom" value="Recherche de musique Ici" /> <br> 
 									<input type="submit" style="text-align:center;" type="submit" name="Rechercher" value="Rechercher"/>
 								</form:form>
 				</footer>
-				<br>
+				<hr>
 				
-				<div id="copyright">
-					<ul class="menu">
+				<div id="">
+					<ul class="menu"  >
 						<c:forEach items="${musics}" var="p">
-							<li>
-							<p>${p.title} ${p.person} </p>
+							<li >
+							<p >${p.title} (${p.person.name} ${p.person.firstname}) </p>
 								<audio controls> 
 									<source src="${p.filePath} " />
 								</audio>
 							<br />
-
+							<p style="color:#69003F;font-size:10pt;" ><span><i>Les Commentaires de cette Musique</i></span></p>
 						<c:forEach items="${p.comments }" var="comment">
-							<p class="commentaire"><b>${comment.inetAdress}</b><br>
-						 		${comment.content} <br>
+							<p class="commentaire">
+							<span style="color:#052B30;font-size:9pt;"> Auteur IP: <b>${comment.inetAdress}</b></span><br>
+							<span style="color:#CDDE47;font-size:10pt;background:#666;"><i>${comment.content}</i></span><br>
 						 		---------------------------------------------
 						 	</p>
 						 	</c:forEach>
@@ -65,7 +71,7 @@
 									<c:set var="actionURL"><c:url value="/comment" /></c:set>
 								<form:form method="POST" modelAttribute="musicComment" action="${actionURL }" >
 									<form:hidden path="music.id" value="${p.id }"/>
-									<form:textarea path="content" style="text-align:center;width:120%;height:5%;margin:auto;" value="Comment here" /> <br> 
+									<form:input path="content" style="text-align:center;width:100%;height:20%;margin:auto;" value="Votre commentaire Ici" /> <br> 
 									<form:select path="mark" items="${markValues }" class="rating" />
 									<input type="submit" style="text-align:center;" type="submit" name="Valider" value="Commentez"/>
 								</form:form>
@@ -86,17 +92,15 @@
 		<!-- Footer -->
 			<section id="footer">
 				<ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
 					<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
 				</ul>
 
 				<div class="copyright">
 					<ul class="menu">
-						<li><a href="/MusikKloud/"> Accueil </a></li>
-						<li><a href="biaou.net">  Liste de Musiques </a></li>
-						<li><a HREF="/MusikKloud/login"> Admin-LogIn </a></li>
-						<li><a href="biaou.net"> A Propos </a></li>
+						<li><a href="<c:url value="/" />"> Accueil </a></li>
+						<li><a href="<c:url value="/list" />">  Liste de Musiques </a></li>
+						<li><a HREF="<c:url value="/login" />"> Admin-LogIn </a></li>
+						<li><a href="<c:url value="/about" />"> A Propos </a></li>
 					</ul>
 				</div>
 				<div class="copyright">

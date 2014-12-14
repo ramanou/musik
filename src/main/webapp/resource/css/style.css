@@ -341,8 +341,8 @@
 				display: inline-block;
 				line-height: 1em;
 				border-left: solid 1px #e6e6e6;
-				padding: 0 0 0 0.5em;
-				margin: 0 0 0 0.5em;
+				padding: 0 0 0 0.2em;
+				margin: 0 0 0 0.2em;
 			}
 			
 			ul.menu li:first-child
@@ -952,7 +952,7 @@
 	
 		#footer .copyright
 		{
-			margin-top: 1em;
+			margin-top: 0.2em;
 			font-size: 0.8em;
 			color: #aaa;
 		}

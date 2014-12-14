@@ -41,32 +41,58 @@
 					<a href="<c:url value="/list" />" class="button scrolly">Liste de Musiques</a>
 					<a href="<c:url value="/login" />" class="button scrolly">Admin-LogIn</a>
 					<a href="<c:url value="/about" />" class="button scrolly">A Propos</a>
+					
+					<p><b>A PROPOS DE MUSIKLOUD</b></p>
 				</header>
-				<footer>
-					<a href="#first" class="button scrolly"><b>Notre Musique, votre plaisir </b><br><i> Ecoutez la musique sans limitation avec MUZIKLOUD</i></a><br>
-					<a href="#first" class="button scrolly">Ecoutez et RE-écoutez nos 3 Meilleures Sélections sur MUZIKLOUD</a>
+				
+				<footer style="margin-left:15%;margin-right:15%">
+					<a href="#first" class="button scrolly">
+						<i>
+							 MUSIKLOUD est un Projet du Module IFI dans le cadres de la formation
+							 MasterII TIIR à l'UNiversité des Lille 1. <br>
+							 Il vise à créer une application web en J2EE utilisant les dernières
+							 technologies en matière de sécurité et de standards JAVA.<br>
+							 
+							 L'objectif est de faire la promotion de jeunes artistes de la musique en créant un réseau
+							d’applications web chargé de mettre en avant les réalisations de jeunes talents. 
+							<br>
+							L'application web réalisé en J2EE se charge de stocker et de partager des informations
+							sur les chanteurs ou groupes d'artiste.
+						</i>
+					</a><br>
+					<br>
+					<a href="#first" class="button scrolly">Liste des différentes Technologies Utilisées</a>
+					<br><a href="#first" class="button scrolly">
+						<ul>
+							<li>J2EE</li>
+							<li>Sring/Maven</li>
+							<li>HTML5/CSS3</li>
+							<li>HIBERNATE</li>
+							<li>SQLITE</li>
+							<li>AJAX</li>
+							<li>Javascript</li>
+							<li>Wrapper</li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</a>
+					<br><br>
+					<a href="#first" class="button scrolly">Contributeurs: 
+						<ul>
+							<li>Ramanou BIAOU</li>
+							<li></li>
+						</ul>
+					</a>
+					
 				</footer>
 				<br>
-				
+					
 				<div id="copyright">
-					<ul class="menu">
-						<li id="slideshow">
-							<p>	Savoir+ sur d'autres sites<br />
-								<a href="#"><img id="imgSlide" width="400" height="200" /></a>
-							
-						</li>
-						
-						<li>
-						<c:forEach items="${musics}" var="p">
-							<p><b>${p.title} </b> de <i>${p.person.name} ${p.person.firstname} </i> </p>
-							<audio controls> 
-								<source src="${p.filePath} " />
-							</audio>
-							<br />
-					 	</c:forEach>
-					 	</li>
-					</ul>
-
+				
 				</div>
 
 			</section>

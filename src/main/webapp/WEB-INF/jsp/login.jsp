@@ -27,6 +27,10 @@
 			<section id="header" class="dark">
 				<header>
 					<h1><b>MUZIKLOUD</b> LE MEILLEUR DE LA MUZIK DE TIIR</h1>
+					<a href="<c:url value="/" />" class="button scrolly">Accueil</a>
+					<a href="<c:url value="/list" />" class="button scrolly">Liste de Musiques</a>
+					<a href="<c:url value="/login" />" class="button scrolly">Admin-LogIn</a>
+					<a href="<c:url value="/about" />" class="button scrolly">A Propos</a>
 				</header>
 				<footer>
 					<a href="#first" class="button scrolly">Authentification ADMIN</a>
@@ -38,7 +42,7 @@
 				<c:if test="${isLoginError}">
 					<div class="errorblock">
 						Vos informations d'authentifications ne sont pas correct <br /> Raison :
-						${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+						<span style="color:#E83C1A;"> ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</span>
 					</div>
 				</c:if>
 
@@ -73,9 +77,7 @@
 		<!-- Footer -->
 			<section id="footer">
 				<ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+				<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
 				</ul>
 
 				<div class="copyright">

@@ -98,7 +98,6 @@ public class AdminController {
 		if (!results.hasErrors()) {
 			useradminService.createUser(useradmin);
 		}
-		mav.addObject("useradmins", useradminService.findAllUsers());
 		return mav;
 	}
 
@@ -111,8 +110,6 @@ public class AdminController {
 	@RequestMapping(value = "/useradmin", method = RequestMethod.GET)
 	public ModelAndView getuseradmins() {
 		ModelAndView mav = new ModelAndView("admin/useradmin/useradmin");
-		mav.addObject("useradmins", useradminService.findAllUsers());
-		mav.addObject("useradmin", new UserAdmin());
 		return mav;
 	}
 	
@@ -123,5 +120,15 @@ public class AdminController {
 	@ModelAttribute("persons")
 	public List<Person> getPersons() {
 		return personService.findAllPersons();
+	}
+	
+	@ModelAttribute("useradmin")
+	public UserAdmin getUserAdmin() {
+		return new UserAdmin();
+	}
+	
+	@ModelAttribute("usersadmin")
+	public List<UserAdmin> getUsersAdmin() {
+		return useradminService.findAllUsers();
 	}
 }
