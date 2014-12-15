@@ -70,8 +70,13 @@ public class MusicServiceImpl implements MusicService {
 	}
 
 	@Override
+	@Transactional
 	public List<Music> search(SearchMusicWrapper wrapper) {
-		return musicDao.search(wrapper);
+		 List<Music> musics = musicDao.search(wrapper);
+		for (Music music : musics) {
+			Hibernate.initialize(music.getComments());
+		}
+		return musics;
 	}
 
 	@Override

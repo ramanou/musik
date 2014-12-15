@@ -42,7 +42,7 @@
 					<a href="#first" class="button scrolly">Notre Musique votre plaisir</a><br><br>
 								<c:set var="actionURL"><c:url value="/search" /></c:set>
 								<form:form method="POST" modelAttribute="searchMusicWrapper" action="${actionURL}">
-									<form:input path="musicTitle" style="text-align:center;width:60%;height:5%;margin:auto;" type="text" name="nom" value="Recherche de musique Ici" /> <br> 
+									<form:input path="musicTitle" style="text-align:center;width:60%;height:5%;margin:auto;" type="text" name="nom" placeholder="Recherche de musique Ici" /> <br> 
 									<input type="submit" style="text-align:center;" type="submit" name="Rechercher" value="Rechercher"/>
 								</form:form>
 				</footer>
@@ -73,7 +73,7 @@
 									<c:set var="actionURL"><c:url value="/comment" /></c:set>
 								<form:form method="POST" modelAttribute="musicComment" action="${actionURL }" >
 									<form:hidden path="music.id" value="${p.id }"/>
-									<form:input path="content" style="text-align:center;width:100%;height:20%;margin:auto;" value="Votre commentaire Ici" /> <br> 
+									<form:input path="content" style="text-align:center;width:100%;height:20%;margin:auto;" placeholder="Votre commentaire Ici" /> <br> 
 									<form:select path="mark" class="rating">
 										<form:option value="0">--- Notez la musique ---</form:option>
 										<form:options items="${markValues }" />
