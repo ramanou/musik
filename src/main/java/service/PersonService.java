@@ -12,10 +12,10 @@ public interface PersonService {
 
 	public List<Person> findAllPersons();
 
+	public List<Person> findAllPersonsWithMusics();
+
 	public Person findPersonByKey(int PersonKey);
 
 	public void updatePerson(Person Person);
-
-	public List<Person> findAllPersonsWithMusics();
 
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,28 +24,8 @@ public class Music {
 		return serialVersionUID;
 	}
 
-	@OneToMany(mappedBy="music", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "music", cascade = CascadeType.ALL)
 	List<MusicComment> comments;
-
-	@ManyToOne(targetEntity=Person.class)
-	@JoinColumn(name="person_id", referencedColumnName="id")
-	private Person person;
-	
-	public List<MusicComment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<MusicComment> comments) {
-		this.comments = comments;
-	}
-
-	public Person getPerson() {
-		return person;
-	}
-
-	public void setPerson(Person person) {
-		this.person = person;
-	}
 
 	@Column
 	private Integer duration;
@@ -59,13 +38,17 @@ public class Music {
 	@Column(name = "id")
 	private Integer id;
 
+	@ManyToOne(targetEntity = Person.class)
+	@JoinColumn(name = "person_id", referencedColumnName = "id")
+	private Person person;
+
 	@NotEmpty
 	@Column
 	private String title;
 
-	// public AbstractArtist getArtist() {
-	// return artist;
-	// }
+	public List<MusicComment> getComments() {
+		return comments;
+	}
 
 	public Integer getDuration() {
 		return duration;
@@ -79,17 +62,29 @@ public class Music {
 		return id;
 	}
 
+	// public AbstractArtist getArtist() {
+	// return artist;
+	// }
+
+	public Person getPerson() {
+		return person;
+	}
+
 	public String getTitle() {
 		return title;
+	}
+
+	public void setComments(List<MusicComment> comments) {
+		this.comments = comments;
+	}
+
+	public void setDuration(Integer duration) {
+		this.duration = duration;
 	}
 
 	// public void setArtist(AbstractArtist artist) {
 	// this.artist = artist;
 	// }
-
-	public void setDuration(Integer duration) {
-		this.duration = duration;
-	}
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
@@ -97,6 +92,10 @@ public class Music {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 	public void setTitle(String title) {

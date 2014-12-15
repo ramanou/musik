@@ -55,7 +55,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserAdmin loadAuthenticatedUser() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Authentication authentication = SecurityContextHolder.getContext()
+				.getAuthentication();
 		if (authentication == null || !authentication.isAuthenticated()) {
 			return null;
 		}

@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -22,24 +21,16 @@ public class Person {
 		return serialVersionUID;
 	}
 
-	public List<Music> getMusics() {
-		return musics;
-	}
-
-	public void setMusics(List<Music> musics) {
-		this.musics = musics;
-	}
-
-	@OneToMany(mappedBy="person", cascade=CascadeType.ALL)
-	List<Music> musics;
+	@Column
+	@NotBlank
+	private String firstname;
 
 	@Id
 	@Column(name = "id")
 	private Integer id;
 
-	@Column
-	@NotBlank
-	private String firstname;
+	@OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+	List<Music> musics;
 
 	@Column
 	@NotBlank
@@ -47,6 +38,14 @@ public class Person {
 
 	public String getFirstname() {
 		return firstname;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public List<Music> getMusics() {
+		return musics;
 	}
 
 	public String getName() {
@@ -57,16 +56,16 @@ public class Person {
 		this.firstname = firstname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public void setMusics(List<Music> musics) {
+		this.musics = musics;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

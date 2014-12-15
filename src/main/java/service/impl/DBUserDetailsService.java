@@ -20,13 +20,16 @@ import service.UserService;
 @Transactional(readOnly = true)
 public class DBUserDetailsService implements UserDetailsService {
 
-	private static Collection<? extends GrantedAuthority> ROLE_USER_AUTHORITY = Arrays.asList(new GrantedAuthority[] { new SimpleGrantedAuthority("ROLE_ADMIN") });
+	private static Collection<? extends GrantedAuthority> ROLE_USER_AUTHORITY = Arrays
+			.asList(new GrantedAuthority[] { new SimpleGrantedAuthority(
+					"ROLE_ADMIN") });
 
 	@Autowired
 	private UserService userService;
 
 	@Override
-	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String userId)
+			throws UsernameNotFoundException {
 		final UserAdmin user = userService.findByUsername(userId);
 		if (user == null) {
 			throw new UsernameNotFoundException("user not found");

@@ -14,12 +14,12 @@ import wrapper.SearchMusicWrapper;
 
 @Repository
 public interface MusicDao extends JpaRepository<Music, Integer> {
-	
-	@Query("SELECT max(id) FROM Music p")
-	Integer lastId();
 
 	@Query("SELECT m FROM Music m ORDER BY id DESC")
 	List<Music> findLastMusic(Pageable pageable);
+
+	@Query("SELECT max(id) FROM Music p")
+	Integer lastId();
 
 	@Query("SELECT m FROM Music m WHERE LOWER(m.title) LIKE LOWER(:#{#wrapper.musicTitleSQL})")
 	List<Music> search(@Param("wrapper") SearchMusicWrapper wrapper);

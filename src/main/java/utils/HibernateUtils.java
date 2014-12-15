@@ -12,7 +12,8 @@ public class HibernateUtils {
 
 		if (entity instanceof HibernateProxy) {
 			Hibernate.initialize(entity);
-			entity = (T) ((HibernateProxy) entity).getHibernateLazyInitializer().getImplementation();
+			entity = (T) ((HibernateProxy) entity)
+					.getHibernateLazyInitializer().getImplementation();
 		}
 		return entity;
 	}

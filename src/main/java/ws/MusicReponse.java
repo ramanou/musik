@@ -7,53 +7,14 @@ import model.Music;
 
 public class MusicReponse {
 
-	private List<MusicCommentResponse> musicComments;
-	
-	private Integer id;
-	private String title;
-	private Integer duration;
-	private String filePath;
-	
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public Integer getDuration() {
-		return duration;
-	}
-
-	public void setDuration(Integer duration) {
-		this.duration = duration;
-	}
-
-	public String getFilePath() {
-		return filePath;
-	}
-
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
-
 	public static MusicReponse fromMusic(Music m) {
 		MusicReponse musicReponse = new MusicReponse();
 		musicReponse.setId(m.getId());
 		musicReponse.setDuration(m.getDuration());
 		musicReponse.setFilePath(m.getFilePath());
 		musicReponse.setTitle(m.getTitle());
-		musicReponse.setMusicComments(MusicCommentResponse.fromComments(m.getComments()));
+		musicReponse.setMusicComments(MusicCommentResponse.fromComments(m
+				.getComments()));
 		return musicReponse;
 	}
 
@@ -64,12 +25,51 @@ public class MusicReponse {
 		}
 		return results;
 	}
+	private Integer duration;
+	private String filePath;
+	private Integer id;
+
+	private List<MusicCommentResponse> musicComments;
+
+	private String title;
+
+	public Integer getDuration() {
+		return duration;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public Integer getId() {
+		return id;
+	}
 
 	public List<MusicCommentResponse> getMusicComments() {
 		return musicComments;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setDuration(Integer duration) {
+		this.duration = duration;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public void setMusicComments(List<MusicCommentResponse> musicComments) {
 		this.musicComments = musicComments;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 }

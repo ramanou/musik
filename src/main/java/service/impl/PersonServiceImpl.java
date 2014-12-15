@@ -41,16 +41,6 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public Person findPersonByKey(int PersonKey) {
-		return personDao.findOne(PersonKey);
-	}
-
-	@Override
-	public void updatePerson(Person Person) {
-		personDao.save(Person);
-	}
-
-	@Override
 	@Transactional
 	public List<Person> findAllPersonsWithMusics() {
 		List<Person> persons = personDao.findAll();
@@ -58,6 +48,16 @@ public class PersonServiceImpl implements PersonService {
 			Hibernate.initialize(person.getMusics());
 		}
 		return persons;
+	}
+
+	@Override
+	public Person findPersonByKey(int PersonKey) {
+		return personDao.findOne(PersonKey);
+	}
+
+	@Override
+	public void updatePerson(Person Person) {
+		personDao.save(Person);
 	}
 
 }

@@ -34,12 +34,12 @@ public class LoginController {
 		return "forward:/login";
 	}
 
-//	/**
-//	 * Logout
-//	 */
-//	@RequestMapping("/logout")
-//	public String logout() {
-//		return "redirect:/";
-//	}
+	// /**
+	// * Logout
+	// */
+	// @RequestMapping("/logout")
+	// public String logout() {
+	// return "redirect:/";
+	// }
 
 }

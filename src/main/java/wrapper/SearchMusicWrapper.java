@@ -8,11 +8,11 @@ public class SearchMusicWrapper {
 		return musicTitle;
 	}
 
+	public String getMusicTitleSQL() {
+		return musicTitle + "%";
+	}
+
 	public void setMusicTitle(String musicTitle) {
 		this.musicTitle = musicTitle;
-	}
-	
-	public String getMusicTitleSQL() {
-		return musicTitle+"%";
 	}
 }

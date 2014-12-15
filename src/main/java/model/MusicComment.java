@@ -9,10 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.beans.factory.annotation.Required;
 
 @Entity
 @Table(name = "comment")
@@ -40,19 +37,12 @@ public class MusicComment implements Serializable {
 	private String inetAdress;
 
 	@Column
-	private Integer mark = 0; //Abort due to constraint violation (comment.mark may not be NULL)
+	private Integer mark = 0; // Abort due to constraint violation (comment.mark
+								// may not be NULL)
 
-	@ManyToOne(targetEntity=Music.class)
-	@JoinColumn(name="music_id", referencedColumnName="id")
+	@ManyToOne(targetEntity = Music.class)
+	@JoinColumn(name = "music_id", referencedColumnName = "id")
 	private Music music;
-
-	public Music getMusic() {
-		return music;
-	}
-
-	public void setMusic(Music music) {
-		this.music = music;
-	}
 
 	public String getContent() {
 		return content;
@@ -74,6 +64,10 @@ public class MusicComment implements Serializable {
 		return mark;
 	}
 
+	public Music getMusic() {
+		return music;
+	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
@@ -92,6 +86,10 @@ public class MusicComment implements Serializable {
 
 	public void setMark(Integer mark) {
 		this.mark = mark;
+	}
+
+	public void setMusic(Music music) {
+		this.music = music;
 	}
 
 }
