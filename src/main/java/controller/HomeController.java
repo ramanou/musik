@@ -21,6 +21,8 @@ import service.MusicService;
 import service.PersonService;
 import service.UserService;
 import wrapper.SearchMusicWrapper;
+import ws.AboutResponse;
+import ws.AboutWebService;
 
 @Controller
 public class HomeController {
@@ -102,8 +104,13 @@ public class HomeController {
 	
 	@ModelAttribute("markValues")
 	public int[] getMarkValues() {
-		int[] values = {0,1,2,3,4,5};
+		int[] values = {1,2,3,4,5};
 		return values;
+	}
+	
+	@ModelAttribute("technologies")
+	public String[] getTechnologies() {
+		return AboutWebService.TECHNOLOGIES;
 	}
 
 }

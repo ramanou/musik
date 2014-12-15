@@ -40,7 +40,7 @@ public class MusicComment implements Serializable {
 	private String inetAdress;
 
 	@Column
-	private Integer mark = -1; //Abort due to constraint violation (comment.mark may not be NULL)
+	private Integer mark = 0; //Abort due to constraint violation (comment.mark may not be NULL)
 
 	@ManyToOne(targetEntity=Music.class)
 	@JoinColumn(name="music_id", referencedColumnName="id")

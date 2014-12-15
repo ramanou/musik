@@ -1,7 +1,6 @@
 package service;
 
 import java.util.List;
-import java.util.Map;
 
 import model.Music;
 import model.MusicComment;
@@ -26,5 +25,7 @@ public interface MusicService {
 	public void addComment(MusicComment musicComment);
 
 	public List<Music> findAllMusicsWithComments();
+
+	public List<Music> findAllMusicsForWS();
 
 }

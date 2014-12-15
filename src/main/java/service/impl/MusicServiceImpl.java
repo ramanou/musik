@@ -1,5 +1,7 @@
 package service.impl;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -14,17 +16,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import service.MusicService;
+import utils.HibernateUtils;
 import wrapper.SearchMusicWrapper;
 import dao.MusicCommentDao;
 import dao.MusicDao;
-
 
 @Service
 public class MusicServiceImpl implements MusicService {
 
 	@Autowired
 	private MusicDao musicDao;
-	
+
 	@Autowired
 	private MusicCommentDao musicCommentDao;
 
@@ -74,6 +76,20 @@ public class MusicServiceImpl implements MusicService {
 
 	@Override
 	public void addComment(MusicComment musicComment) {
+		Date date = new Date();
+		Calendar today = Calendar.getInstance();
+		today.setTime(date);
+		today.set(Calendar.HOUR_OF_DAY, 0);
+		today.set(Calendar.MINUTE, 0);
+		today.set(Calendar.SECOND, 0);
+		today.set(Calendar.MILLISECOND, 0);
+
+		List<MusicComment> comments = musicCommentDao.commentsForToday(musicComment.getInetAdress(),
+				musicComment.getMusic(), today.getTime());
+		if (comments.size() >= 3) {
+			return;
+		}
+
 		Integer id = musicCommentDao.lastId();
 		if (id == null) {
 			musicComment.setId(0);
@@ -87,6 +103,16 @@ public class MusicServiceImpl implements MusicService {
 	@Override
 	@Transactional
 	public List<Music> findAllMusicsWithComments() {
+		List<Music> musics = musicDao.findAll();
+		for (Music music : musics) {
+			Hibernate.initialize(music.getComments());
+		}
+		return musics;
+	}
+
+	@Override
+	@Transactional
+	public List<Music> findAllMusicsForWS() {
 		List<Music> musics = musicDao.findAll();
 		for (Music music : musics) {
 			Hibernate.initialize(music.getComments());

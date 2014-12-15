@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+  <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -51,10 +52,12 @@
 				<p><b>Liste des Administrateurs</b></p>
 				<hr>
 				
+				<c:set var="current"><sec:authentication property="principal.username" /></c:set>
 				<ul>
 					<c:forEach items="${usersadmin}" var="p">
-						
+					<c:if test="${current != p.userName}">
 						<li> * <b>N°</b>${p.id} <b>UserName: </b> ${p.userName} <b>Mot de Passe: </b>*********<a href="<c:url value="/admin/useradmin/delete/${p.id}"/>"> <b style="background:#641A02;"> Supprimer </b> </a></li>
+					</c:if>
 					</c:forEach>
 				</ul>
 			</section>

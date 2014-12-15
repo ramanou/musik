@@ -64,20 +64,9 @@
 					<a href="#first" class="button scrolly">Liste des différentes Technologies Utilisées</a>
 					<br><a href="#first" class="button scrolly">
 						<ul>
-							<li>J2EE</li>
-							<li>Sring/Maven</li>
-							<li>HTML5/CSS3</li>
-							<li>HIBERNATE</li>
-							<li>SQLITE</li>
-							<li>AJAX</li>
-							<li>Javascript</li>
-							<li>Wrapper</li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<c:forEach items="${technologies}" var="t">
+								<li>${t }</li>
+							</c:forEach>
 						</ul>
 					</a>
 					<br><br>

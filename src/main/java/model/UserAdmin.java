@@ -24,7 +24,7 @@ public class UserAdmin implements Serializable {
 	@NotEmpty
 	private String password;
 
-	@Column(name = "username", unique=true)
+	@Column(name = "username")
 	@NotEmpty
 	private String userName;
 
