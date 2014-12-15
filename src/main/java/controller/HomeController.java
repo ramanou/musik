@@ -55,6 +55,7 @@ public class HomeController {
 		List<Music> musics = musicService.findAllMusicsWithComments();
 		ModelAndView mav = new ModelAndView("list");
 		mav.addObject("musics", musics);
+		mav.addObject("musicComment", new MusicComment());
 		return mav;
 	}
 

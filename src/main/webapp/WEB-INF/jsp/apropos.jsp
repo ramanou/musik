@@ -61,6 +61,7 @@
 						</i>
 					</a><br>
 					<br>
+					
 					<a href="#first" class="button scrolly">Liste des différentes Technologies Utilisées</a>
 					<br><a href="#first" class="button scrolly">
 						<ul>
@@ -69,6 +70,8 @@
 							</c:forEach>
 						</ul>
 					</a>
+					<br><br>
+					<a href="<c:url value="/ws"/>" class="button scrolly">Cliquez ici pour accéder au WebService</a>
 					<br><br>
 					<a href="#first" class="button scrolly">Contributeurs: 
 						<ul>

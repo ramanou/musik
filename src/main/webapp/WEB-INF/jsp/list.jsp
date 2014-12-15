@@ -58,11 +58,11 @@
 								</audio>
 							<br />
 							<p style="color:#69003F;font-size:10pt;" ><span><i>Les Commentaires de cette Musique</i></span></p>
-						<c:forEach items="${p.comments }" var="comment">
+						<c:forEach items="${p.comments }" var="c">
 							<p class="commentaire">
-							<span style="color:#052B30;font-size:9pt;"> Auteur IP: <b>${comment.inetAdress}</b> <c:if test="${comment.mark > 0}" >/ note : ${comment.mark}</c:if></span><br>
-							<span style="color:#CDDE47;font-size:10pt;background:#666;"><i>${comment.content}</i></span><br>
-						 	<span style="color:#CDDE47;font-size:10pt;background:#666;"><i><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${comment.date}" /></i></span><br>
+							<span style="color:#052B30;font-size:9pt;"> Auteur IP: <b>${c.inetAdress}</b> <c:if test="${c.mark > 0}" >/ note : ${c.mark}</c:if></span><br>
+							<span style="color:#CDDE47;font-size:10pt;background:#666;"><i>${c.content}</i></span><br>
+						 	<span style="color:#CDDE47;font-size:10pt;background:#666;"><i><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${c.date}" /></i></span><br>
 						 		---------------------------------------------
 						 	</p>
 						 	</c:forEach>
